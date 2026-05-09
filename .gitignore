@@ -3,3 +3,5 @@ data/
 .ipynb_checkpoints/
 catboost_info/
 venv/
+transactions_chunks/
+run_notebook.py
