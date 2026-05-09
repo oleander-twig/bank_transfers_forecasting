@@ -1,1 +1,5 @@
-.data/
+data/
+.DS_Store
+.ipynb_checkpoints/
+catboost_info/
+venv/
