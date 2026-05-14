@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+asyncpg
+boto3
+joblib
+lightgbm
+pandas
+numpy
+pydantic-settings
