@@ -1,21 +1,23 @@
 import io
 
 import boto3
+from botocore.client import Config
 import joblib
 import numpy as np
 import pandas as pd
 
-from .config import settings
-from .features import build_features_from_pivot
+from config import settings
+from features import build_features_from_pivot
 
 
 def load_model_from_s3():
-    """Download the trained LightGBM model from S3 and deserialize."""
     s3 = boto3.client(
         "s3",
-        aws_access_key_id=settings.aws_access_key_id or None,
-        aws_secret_access_key=settings.aws_secret_access_key or None,
-        region_name=settings.aws_region or None,
+        endpoint_url=settings.s3_endpoint_url or None,
+        aws_access_key_id=settings.aws_access_key_id,
+        aws_secret_access_key=settings.aws_secret_access_key,
+        region_name=settings.aws_region,
+        config=Config(signature_version="s3v4", s3={"addressing_style": "path"}),
     )
     buf = io.BytesIO()
     s3.download_fileobj(settings.s3_bucket, settings.s3_model_key, buf)

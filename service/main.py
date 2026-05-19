@@ -3,10 +3,10 @@ from contextlib import asynccontextmanager
 import pandas as pd
 from fastapi import FastAPI, HTTPException
 
-from .config import settings
-from .database import close_pool, fetch_history
-from .model import load_model_from_s3, predict_recursive
-from .schemas import PredictRequest, PredictResponse
+from config import settings
+from database import close_pool, fetch_history
+from model import load_model_from_s3, predict_recursive
+from schemas import PredictRequest, PredictResponse
 
 
 @asynccontextmanager
