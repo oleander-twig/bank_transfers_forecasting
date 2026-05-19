@@ -3,5 +3,9 @@ data/
 .ipynb_checkpoints/
 catboost_info/
 venv/
+venv 2/
 transactions_chunks/
+run_notebook.py
+train_extended.parquet
+train.parquet
 run_notebook.py
