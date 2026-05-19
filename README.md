@@ -14,7 +14,7 @@ $$\overline{RMSLE} = \frac{1}{N}\sum_{i=1}^N \sqrt{\frac{1}{T}\sum_{t=1}^T (\log
 Базовое предсказание на модели lightGBM
 Работа в в файле /research/lightGBM_sarima(1).ipynb
 
-| модель   | publick score 1 место | полученный score |
+| модель   | public score 1 место | полученный score |
 |----------|-----------------------|------------------|
 | lightGBM | 1,41                  | 1, 46            |  
 |          |                       |                  |   
@@ -25,6 +25,7 @@ $$\overline{RMSLE} = \frac{1}{N}\sum_{i=1}^N \sqrt{\frac{1}{T}\sum_{t=1}^T (\log
 - базовое предсказание на XGBoost в файле /transactions_xgboost.ipynb
 - добавлена обработка кат признаков в /transactions_xgboost.ipynb
 - сравнение нескольких наборов признаков в /transactions_xgboost.ipynb
+- реализация mvp-сервиса для модели в директории /service 
 - финальный вариант ВКР в /transactions_xgboost.ipynb
 
 ## Финальный вариант 
