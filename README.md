@@ -29,4 +29,4 @@ $$\overline{RMSLE} = \frac{1}{N}\sum_{i=1}^N \sqrt{\frac{1}{T}\sum_{t=1}^T (\log
 - финальный вариант ВКР в /transactions_xgboost.ipynb
 
 ## Финальный вариант 
-XGBoost + лаги по 70 неделям, прогнозирование на k периодов, логарифмирование - **score 1,82 на private** 
+XGBoost + лаги по 70 неделям, прогнозирование на k периодов, логарифмирование - **score 2,18 на private** 

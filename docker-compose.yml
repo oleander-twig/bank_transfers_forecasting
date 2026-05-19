@@ -1,4 +1,20 @@
 services:
+  postgres:
+    image: postgres:16-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: bank_forecasting
+    volumes:
+      - /tmp/postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d bank_forecasting"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
   minio:
     image: minio/minio:latest
     command: server /data --console-address ":9001"
@@ -16,10 +32,14 @@ services:
     ports:
       - "8000:8000"
     environment:
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/bank_forecasting
       S3_BUCKET: bank-forecasting
       S3_MODEL_KEY: my_model.joblib
       S3_ENDPOINT_URL: http://minio:9000
       AWS_ACCESS_KEY_ID: minioadmin
       AWS_SECRET_ACCESS_KEY: minioadmin
     depends_on:
-      - minio
+      postgres:
+        condition: service_healthy
+      minio:
+        condition: service_started
