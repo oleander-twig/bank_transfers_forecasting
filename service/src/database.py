@@ -29,7 +29,7 @@ async def close_pool() -> None:
         _pool = None
 
 
-async def fetch_history(inn_list: list[int]) -> pd.DataFrame:
+async def fetch_history(inn_list: list[str]) -> pd.DataFrame:
     """Fetch weekly target series for given INN list from PostgreSQL."""
     if not inn_list:
         return pd.DataFrame(columns=HISTORY_COLUMNS)
@@ -50,13 +50,13 @@ async def fetch_history(inn_list: list[int]) -> pd.DataFrame:
 
     df = pd.DataFrame([dict(r) for r in rows])
     df = df.drop_duplicates(subset=["inn_id", "week"], keep="last")
-    df["inn_id"] = df["inn_id"].astype(int)
+    df["inn_id"] = df["inn_id"].astype(str)
     df["week"] = df["week"].astype(int)
     df["target"] = df["target"].astype(float)
     return df.sort_values(["inn_id", "week"], ignore_index=True)
 
 
-async def fetch_profiles(inn_list: list[int]) -> pd.DataFrame:
+async def fetch_profiles(inn_list: list[str]) -> pd.DataFrame:
     """Fetch client profiles for XGBoost categorical features."""
     if not inn_list:
         return pd.DataFrame(columns=PROFILE_COLUMNS)
@@ -81,7 +81,7 @@ async def fetch_profiles(inn_list: list[int]) -> pd.DataFrame:
         return pd.DataFrame(columns=PROFILE_COLUMNS)
 
     df = pd.DataFrame([dict(r) for r in rows])
-    df["inn_id"] = df["inn_id"].astype(int)
+    df["inn_id"] = df["inn_id"].astype(str)
     for col in PROFILE_COLUMNS[1:]:
         df[col] = df[col].astype("int32")
     return df.sort_values("inn_id", ignore_index=True)

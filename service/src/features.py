@@ -25,7 +25,7 @@ def _lags_row_at_cutoff(n: int, weeks: np.ndarray, y: np.ndarray, max_lag: int =
 def transform_data_for_prediction(
     df: pd.DataFrame,
     prof: pd.DataFrame,
-    inns: list[int],
+    inns: list[str],
     n_start_week: int,
     horizons: int,
 ) -> pd.DataFrame:

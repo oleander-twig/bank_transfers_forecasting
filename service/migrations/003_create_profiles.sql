@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS profiles (
-    inn_id BIGINT NOT NULL,
+    inn_id VARCHAR(10) NOT NULL,
     ipul INTEGER,
     id_region INTEGER,
     main_okved_group INTEGER,

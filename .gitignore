@@ -12,3 +12,5 @@ train.parquet
 run_notebook.py
 __pycache__/
 my_model.joblib
+data.csv
+profiles.csv

@@ -42,7 +42,7 @@ async def predict(request: PredictRequest):
         for h in range(1, horizons + 1):
             results.append(
                 {
-                    "inn_id": int(inn_id),
+                    "inn_id": inn_id,
                     "week": n_start_week + h - 1,
                     "value": float(pred[i * horizons + h - 1]),
                 }

@@ -9,10 +9,11 @@ from urllib.parse import urlparse, urlunparse
 import asyncpg
 
 SERVICE_ROOT = Path(__file__).resolve().parent.parent
+SRC_DIR = SERVICE_ROOT / "src"
 MIGRATIONS_DIR = SERVICE_ROOT / "migrations"
 APP_DATABASE = "bank_forecasting"
 
-sys.path.insert(0, str(SERVICE_ROOT))
+sys.path.insert(0, str(SRC_DIR))
 from config import settings  
 
 
